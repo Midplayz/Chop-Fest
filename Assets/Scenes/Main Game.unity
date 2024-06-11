@@ -1232,10 +1232,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2556e999ef033804cbc99930fca10fb2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  knife: {fileID: 2671293476871637941}
-  maxDownRotation: 37
-  maxUpRotation: -37
-  rotationSpeed: 100
+  knifeController: {fileID: 4472825618373749345}
   sliceMoveDistance: 0.15
 --- !u!1 &919132149573051580
 GameObject:
@@ -1707,6 +1704,7 @@ GameObject:
   - component: {fileID: 3339850059263037711}
   - component: {fileID: 1870784375474347690}
   - component: {fileID: 4472825618373749344}
+  - component: {fileID: 4472825618373749345}
   m_Layer: 0
   m_Name: Cleaver
   m_TagString: Untagged
@@ -2433,6 +2431,22 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &4472825618373749345
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2671293476871637941}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f2d173a7b5771734faa9cdb6dd46b995, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxDownRotation: 37
+  maxUpRotation: -37
+  rotationSpeed: 100
+  choppingManager: {fileID: 919132149002393048}
 --- !u!1 &4569822871745037736
 GameObject:
   m_ObjectHideFlags: 0

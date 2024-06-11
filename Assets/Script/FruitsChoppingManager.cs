@@ -3,10 +3,7 @@ using UnityEngine;
 
 public class FruitChoppingManager : MonoBehaviour
 {
-    public GameObject knife;
-    public float maxDownRotation = 37f;
-    public float maxUpRotation = -37f;
-    public float rotationSpeed = 100f;
+    public KnifeController knifeController;  // Reference to the KnifeController script
     public float sliceMoveDistance = 0.15f;  // Distance to move the fruit after each slice
 
     private int currentFruitIndex = 0;
@@ -14,8 +11,6 @@ public class FruitChoppingManager : MonoBehaviour
     private List<Transform> fruits = new List<Transform>();
     private List<Vector3> initialFruitPositions = new List<Vector3>();
     private List<List<Vector3>> initialPartPositions = new List<List<Vector3>>();
-    private bool knifeIsUp = true;
-    private bool knifeIsDown = false;
 
     void Start()
     {
@@ -43,51 +38,7 @@ public class FruitChoppingManager : MonoBehaviour
         }
     }
 
-    void Update()
-    {
-        HandleKnifeMovement();
-    }
-
-    private void HandleKnifeMovement()
-    {
-        float rotation = knife.transform.localEulerAngles.z;
-        if (rotation > 180) rotation -= 360;
-
-        if (Input.GetKey(KeyCode.UpArrow) && rotation > maxUpRotation)
-        {
-            knife.transform.Rotate(Vector3.forward, -rotationSpeed * Time.deltaTime);
-        }
-        else if (Input.GetKey(KeyCode.DownArrow) && rotation < maxDownRotation && !AllPartsSliced())
-        {
-            knife.transform.Rotate(Vector3.forward, rotationSpeed * Time.deltaTime);
-        }
-
-        if (rotation >= maxDownRotation - 1f && !knifeIsDown)
-        {
-            knifeIsDown = true;
-            knifeIsUp = false;
-            CutCurrentPart();
-        }
-        else if (rotation <= maxUpRotation + 1f && !knifeIsUp)
-        {
-            knifeIsUp = true;
-            knifeIsDown = false;
-            MoveFruitLeft();
-        }
-
-        if (Input.GetKeyDown(KeyCode.LeftArrow))
-        {
-            Debug.Log("Next Initiated");
-            if (AllPartsSliced())
-            {
-                ResetFruit();
-                SwitchToNextFruit();
-                Debug.Log("Next Carried OUt");
-            }
-        }
-    }
-
-    private void CutCurrentPart()
+    public void CutCurrentPart()
     {
         Transform currentFruit = fruits[currentFruitIndex];
         if (currentPartIndex >= 0)
@@ -100,10 +51,9 @@ public class FruitChoppingManager : MonoBehaviour
             }
             currentPartIndex--;
         }
-        Debug.Log("Current Part: " + currentPartIndex);
     }
 
-    private void MoveFruitLeft()
+    public void MoveFruitLeft()
     {
         if (currentPartIndex > 0)
         {
@@ -112,14 +62,12 @@ public class FruitChoppingManager : MonoBehaviour
         }
     }
 
-    private bool AllPartsSliced()
+    public bool AllPartsSliced()
     {
-        bool isAllPartsSliced = currentPartIndex == 0;
-        Debug.Log("All Parts Sliced? " + isAllPartsSliced);
-        return isAllPartsSliced;
+        return currentPartIndex == 0;
     }
 
-    private void ResetFruit()
+    public void ResetFruit()
     {
         Transform currentFruit = fruits[currentFruitIndex];
         currentFruit.localPosition = initialFruitPositions[currentFruitIndex];
@@ -139,7 +87,7 @@ public class FruitChoppingManager : MonoBehaviour
         }
     }
 
-    private void SwitchToNextFruit()
+    public void SwitchToNextFruit()
     {
         fruits[currentFruitIndex].gameObject.SetActive(false);
         currentPartIndex = 0;
