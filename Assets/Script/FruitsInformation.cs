@@ -16,7 +16,6 @@ public class FruitsInformation : MonoBehaviour
 
     void Start()
     {
-        Debug.Log("CALLED");
         fruitTransformData = new TransformData
         {
             localPosition = transform.localPosition,

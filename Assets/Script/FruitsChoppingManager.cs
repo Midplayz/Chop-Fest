@@ -19,7 +19,6 @@ public class FruitChoppingManager : MonoBehaviour
 
     void Start()
     {
-        // Get all fruit children and save their initial positions
         foreach (Transform fruit in transform)
         {
             fruits.Add(fruit);
@@ -31,11 +30,9 @@ public class FruitChoppingManager : MonoBehaviour
                 partPositions.Add(part.localPosition);
             }
             initialPartPositions.Add(partPositions);
-            // Deactivate all fruits at the start
             fruit.gameObject.SetActive(false);
         }
 
-        // Activate the first fruit
         if (fruits.Count > 0)
         {
             ActivateFruit(0);
@@ -97,7 +94,6 @@ public class FruitChoppingManager : MonoBehaviour
             fruitsInfo.ResetTransforms();
         }
 
-        // Reset rigidbody properties for the child parts
         for (int i = 0; i < currentFruit.childCount; i++)
         {
             Transform part = currentFruit.GetChild(i);
@@ -136,13 +132,13 @@ public class FruitChoppingManager : MonoBehaviour
 
     public void MoveAllSlicedParts()
     {
-        Transform currentFruit = fruits[currentFruitIndex]; // Assuming fruits is a List<Transform>
+        Transform currentFruit = fruits[currentFruitIndex]; 
         Vector3 targetPosition = currentFruit.position - Vector3.forward * moveDistance;
 
         List<Transform> slicedParts = new List<Transform>();
         foreach (Transform part in currentFruit)
         {
-            if (part.gameObject.activeSelf) // Assuming active parts are sliced
+            if (part.gameObject.activeSelf) 
             {
                 slicedParts.Add(part);
             }
