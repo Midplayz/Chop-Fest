@@ -1,10 +1,15 @@
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class FruitChoppingManager : MonoBehaviour
 {
-    public KnifeController knifeController;  // Reference to the KnifeController script
-    public float sliceMoveDistance = 0.15f;  // Distance to move the fruit after each slice
+    public KnifeController knifeController;  
+    public float sliceMoveDistance = 0.15f; 
+    public float sliceForce = 5f;
+
+    public float moveSpeed = 1.0f; 
+    public float moveDistance = 1.0f;
 
     private int currentFruitIndex = 0;
     private int currentPartIndex = 0;
@@ -26,7 +31,6 @@ public class FruitChoppingManager : MonoBehaviour
                 partPositions.Add(part.localPosition);
             }
             initialPartPositions.Add(partPositions);
-
             // Deactivate all fruits at the start
             fruit.gameObject.SetActive(false);
         }
@@ -53,14 +57,31 @@ public class FruitChoppingManager : MonoBehaviour
         }
     }
 
+    public void ApplyForceToSlices()
+    {
+        Transform currentFruit = fruits[currentFruitIndex];
+        for (int i = 0; i < currentFruit.childCount; i++)
+        {
+            Transform part = currentFruit.GetChild(i);
+            Rigidbody rb = part.GetComponent<Rigidbody>();
+            if (rb != null)
+            {
+                rb.isKinematic = false;
+                rb.AddForce(-Vector3.forward * sliceForce, ForceMode.Impulse);  
+            }
+        }
+    }
+
     public void MoveFruitLeft()
     {
         if (currentPartIndex > 0)
         {
             Transform currentFruit = fruits[currentFruitIndex];
+            sliceMoveDistance = currentFruit.GetComponent<FruitsInformation>().amountToMove;
             currentFruit.localPosition += new Vector3(sliceMoveDistance, 0, 0);
         }
     }
+
 
     public bool AllPartsSliced()
     {
@@ -70,19 +91,22 @@ public class FruitChoppingManager : MonoBehaviour
     public void ResetFruit()
     {
         Transform currentFruit = fruits[currentFruitIndex];
-        currentFruit.localPosition = initialFruitPositions[currentFruitIndex];
+        FruitsInformation fruitsInfo = currentFruit.GetComponent<FruitsInformation>();
+        if (fruitsInfo != null)
+        {
+            fruitsInfo.ResetTransforms();
+        }
 
+        // Reset rigidbody properties for the child parts
         for (int i = 0; i < currentFruit.childCount; i++)
         {
             Transform part = currentFruit.GetChild(i);
-            part.localPosition = initialPartPositions[currentFruitIndex][i];
-
             Rigidbody rb = part.GetComponent<Rigidbody>();
             if (rb != null)
             {
-                rb.isKinematic = true;
                 rb.velocity = Vector3.zero;
                 rb.angularVelocity = Vector3.zero;
+                rb.isKinematic = true;
             }
         }
     }
@@ -108,5 +132,36 @@ public class FruitChoppingManager : MonoBehaviour
         currentPartIndex = fruits[index].childCount - 1;
         fruits[index].gameObject.SetActive(true);
         MoveFruitLeft();
+    }
+
+    public void MoveAllSlicedParts()
+    {
+        Transform currentFruit = fruits[currentFruitIndex]; // Assuming fruits is a List<Transform>
+        Vector3 targetPosition = currentFruit.position - Vector3.forward * moveDistance;
+
+        List<Transform> slicedParts = new List<Transform>();
+        foreach (Transform part in currentFruit)
+        {
+            if (part.gameObject.activeSelf) // Assuming active parts are sliced
+            {
+                slicedParts.Add(part);
+            }
+        }
+
+        StartCoroutine(MoveAllSlicedPartsCoroutine(slicedParts, targetPosition));
+    }
+
+    private IEnumerator MoveAllSlicedPartsCoroutine(List<Transform> slicedParts, Vector3 targetPosition)
+    {
+        float t = 0.0f;
+        while (t < 1.0f)
+        {
+            t += Time.deltaTime * moveSpeed;
+            foreach (Transform part in slicedParts)
+            {
+                part.position = Vector3.Lerp(part.position, targetPosition, t);
+            }
+            yield return null;
+        }
     }
 }

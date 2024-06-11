@@ -646,6 +646,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 976149195}
+  - component: {fileID: 976149196}
   m_Layer: 0
   m_Name: Strawberry
   m_TagString: Untagged
@@ -673,6 +674,23 @@ Transform:
   - {fileID: 2044434554728547282}
   m_Father: {fileID: 543450652653490029}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &976149196
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 976149194}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 55ef7fbd7d49c3046b80b0b6fba722e9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  amountToMove: 0.185
+  fruitTransformData:
+    localPosition: {x: 0, y: 0, z: 0}
+    localRotation: {x: 0, y: 0, z: 0, w: 0}
+  partTransformData: []
 --- !u!1 &1076192313
 GameObject:
   m_ObjectHideFlags: 0
@@ -682,6 +700,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1076192314}
+  - component: {fileID: 1076192315}
   m_Layer: 0
   m_Name: Mango
   m_TagString: Untagged
@@ -709,6 +728,23 @@ Transform:
   - {fileID: 4717385215071520825}
   m_Father: {fileID: 543450652653490029}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1076192315
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1076192313}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 55ef7fbd7d49c3046b80b0b6fba722e9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  amountToMove: 0.18
+  fruitTransformData:
+    localPosition: {x: 0, y: 0, z: 0}
+    localRotation: {x: 0, y: 0, z: 0, w: 0}
+  partTransformData: []
 --- !u!1 &1276082270
 GameObject:
   m_ObjectHideFlags: 0
@@ -718,6 +754,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1276082271}
+  - component: {fileID: 1276082272}
   m_Layer: 0
   m_Name: Banana
   m_TagString: Untagged
@@ -746,6 +783,23 @@ Transform:
   - {fileID: 7932677644262938930}
   m_Father: {fileID: 543450652653490029}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1276082272
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1276082270}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 55ef7fbd7d49c3046b80b0b6fba722e9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  amountToMove: 0.2
+  fruitTransformData:
+    localPosition: {x: 0, y: 0, z: 0}
+    localRotation: {x: 0, y: 0, z: 0, w: 0}
+  partTransformData: []
 --- !u!1 &1282935749
 GameObject:
   m_ObjectHideFlags: 0
@@ -755,13 +809,14 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1282935750}
+  - component: {fileID: 1282935751}
   m_Layer: 0
   m_Name: Pear
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1282935750
 Transform:
   m_ObjectHideFlags: 0
@@ -782,6 +837,23 @@ Transform:
   - {fileID: 4974399631363334502}
   m_Father: {fileID: 543450652653490029}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1282935751
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1282935749}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 55ef7fbd7d49c3046b80b0b6fba722e9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  amountToMove: 0.185
+  fruitTransformData:
+    localPosition: {x: 0, y: 0, z: 0}
+    localRotation: {x: 0, y: 0, z: 0, w: 0}
+  partTransformData: []
 --- !u!1 &1732977977
 GameObject:
   m_ObjectHideFlags: 0
@@ -898,6 +970,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2044652806}
+  - component: {fileID: 2044652807}
   m_Layer: 0
   m_Name: Apple
   m_TagString: Untagged
@@ -926,6 +999,23 @@ Transform:
   - {fileID: 1758243559351965877}
   m_Father: {fileID: 543450652653490029}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2044652807
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2044652805}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 55ef7fbd7d49c3046b80b0b6fba722e9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  amountToMove: 0.185
+  fruitTransformData:
+    localPosition: {x: 0, y: 0, z: 0}
+    localRotation: {x: 0, y: 0, z: 0, w: 0}
+  partTransformData: []
 --- !u!4 &83219215978795089
 Transform:
   m_ObjectHideFlags: 0
@@ -1233,7 +1323,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   knifeController: {fileID: 4472825618373749345}
-  sliceMoveDistance: 0.15
+  sliceMoveDistance: 0.19
+  sliceForce: 4
+  moveSpeed: 0.08
+  moveDistance: 3
 --- !u!1 &919132149573051580
 GameObject:
   m_ObjectHideFlags: 0
@@ -1246,6 +1339,7 @@ GameObject:
   - component: {fileID: 3469287837072765347}
   - component: {fileID: 1711813855494980969}
   - component: {fileID: 3469287837072765348}
+  - component: {fileID: 3469287837072765349}
   m_Layer: 0
   m_Name: Plate
   m_TagString: Untagged
@@ -2029,6 +2123,35 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: -2124705421725058983, guid: 352bfe4379a04e74396b68b6c56da520, type: 3}
+--- !u!114 &3469287837072765349
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 919132149573051580}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 41ffebfddb341b5448511569bd308a03, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveDistance: 3
+  moveSpeed: 1
+  plateMaterial: {fileID: 2100000, guid: e97ad77fdd7bbec469cdb32bfe87596d, type: 2}
+  colors:
+  - {r: 0.6, g: 0.10980393, b: 0.023529414, a: 0}
+  - {r: 0.9811321, g: 0.65813345, b: 0.06941971, a: 0}
+  - {r: 0.999097, g: 1, b: 0.28773582, a: 0}
+  - {r: 0.17352676, g: 1, b: 0, a: 0}
+  - {r: 0.2783019, g: 1, b: 0.7612581, a: 0}
+  - {r: 0.27843142, g: 0.6089643, b: 1, a: 0}
+  - {r: 0.35009962, g: 0.27843142, b: 1, a: 0}
+  - {r: 0.6122667, g: 0.27843142, b: 1, a: 0}
+  - {r: 1, g: 0.27843142, b: 0.96010876, a: 0}
+  - {r: 1, g: 0.27843142, b: 0.7955556, a: 0}
+  - {r: 1, g: 0.27843142, b: 0.4652859, a: 0}
+  - {r: 1, g: 1, b: 1, a: 0}
+  - {r: 0.3584906, g: 0.3584906, b: 0.3584906, a: 0}
 --- !u!33 &3469287837810329196
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -2447,6 +2570,7 @@ MonoBehaviour:
   maxUpRotation: -37
   rotationSpeed: 100
   choppingManager: {fileID: 919132149002393048}
+  plateMovement: {fileID: 3469287837072765349}
 --- !u!1 &4569822871745037736
 GameObject:
   m_ObjectHideFlags: 0
@@ -3203,7 +3327,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!54 &6217591547166309274
 Rigidbody:
   m_ObjectHideFlags: 0

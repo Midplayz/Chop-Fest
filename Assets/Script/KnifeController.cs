@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class KnifeController : MonoBehaviour
@@ -6,9 +7,11 @@ public class KnifeController : MonoBehaviour
     public float maxUpRotation = -37f;
     public float rotationSpeed = 100f;
     public FruitChoppingManager choppingManager;
+    public PlateMovement plateMovement;
 
     private bool knifeIsUp = true;
     private bool knifeIsDown = false;
+    private bool initiatedLeft = false;
 
     void Update()
     {
@@ -42,13 +45,25 @@ public class KnifeController : MonoBehaviour
             choppingManager.MoveFruitLeft();
         }
 
-        if (Input.GetKeyDown(KeyCode.LeftArrow))
+        if (Input.GetKeyDown(KeyCode.LeftArrow) && !initiatedLeft)
         {
             if (choppingManager.AllPartsSliced())
             {
-                choppingManager.ResetFruit();
-                choppingManager.SwitchToNextFruit();
+                initiatedLeft = true;
+                StartCoroutine(FinalActions());
             }
         }
+    }
+
+    private IEnumerator FinalActions()
+    {
+        choppingManager.ApplyForceToSlices();
+        yield return new WaitForSeconds(0.5f);
+        choppingManager.MoveAllSlicedParts();
+        plateMovement.MovePlateToLeft();
+        yield return new WaitForSeconds(2.0f);
+        choppingManager.ResetFruit();
+        choppingManager.SwitchToNextFruit();
+        initiatedLeft = false;
     }
 }
