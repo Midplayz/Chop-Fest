@@ -17,6 +17,8 @@ public class FruitChoppingManager : MonoBehaviour
     private List<Vector3> initialFruitPositions = new List<Vector3>();
     private List<List<Vector3>> initialPartPositions = new List<List<Vector3>>();
 
+    private bool shouldStopSlicesMoving = false;
+
     void Start()
     {
         foreach (Transform fruit in transform)
@@ -92,6 +94,7 @@ public class FruitChoppingManager : MonoBehaviour
         if (fruitsInfo != null)
         {
             fruitsInfo.ResetTransforms();
+            shouldStopSlicesMoving = true;
         }
 
         for (int i = 0; i < currentFruit.childCount; i++)
@@ -132,6 +135,7 @@ public class FruitChoppingManager : MonoBehaviour
 
     public void MoveAllSlicedParts()
     {
+        shouldStopSlicesMoving = false;
         Transform currentFruit = fruits[currentFruitIndex]; 
         Vector3 targetPosition = currentFruit.position - Vector3.forward * moveDistance;
 
@@ -150,7 +154,7 @@ public class FruitChoppingManager : MonoBehaviour
     private IEnumerator MoveAllSlicedPartsCoroutine(List<Transform> slicedParts, Vector3 targetPosition)
     {
         float t = 0.0f;
-        while (t < 1.0f)
+        while (t < 1.0f && !shouldStopSlicesMoving)
         {
             t += Time.deltaTime * moveSpeed;
             foreach (Transform part in slicedParts)
