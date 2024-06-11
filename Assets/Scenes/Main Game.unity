@@ -290,6 +290,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cutMaterial: {fileID: 2100000, guid: c460251eeee6267439cccb31dd7c341e, type: 2}
+  sliceOffset: 0.1
+  scaleMultiplier: 1
+  vegetableToCut: {fileID: 691076487912735782}
 --- !u!4 &338825816
 Transform:
   m_ObjectHideFlags: 0
@@ -1515,7 +1518,7 @@ GameObject:
   - component: {fileID: 4657333949134474860}
   m_Layer: 0
   m_Name: 46_melon
-  m_TagString: Untagged
+  m_TagString: Vegetable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3456,8 +3459,8 @@ Transform:
   m_GameObject: {fileID: 691076487912735782}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 1, w: 0}
-  m_LocalPosition: {x: 0.00173, y: 0.00004, z: 0.0009519505}
-  m_LocalScale: {x: 0.2583415, y: 0.25834155, z: 0.15491971}
+  m_LocalPosition: {x: 0.0017342, y: 0.000032291, z: 0.000953}
+  m_LocalScale: {x: 0.15558615, y: 0.1555862, z: 0.093300395}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1268519339887013794}
@@ -7100,7 +7103,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!1 &6355126631209240503
 GameObject:
   m_ObjectHideFlags: 0
